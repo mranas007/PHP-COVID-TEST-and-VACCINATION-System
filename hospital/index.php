@@ -14,7 +14,7 @@
         <div class="sidebar">
             <div class="h4 mb-4 px-3">Hospital Name</div>
             <ul class="list-unstyled">
-                <li><a href="hospitalDashboard.php">Dashboard</a></li>
+                <li><a href="./index.php">Dashboard</a></li>
                 <li><a href="./views/patientsList.php">Patient Requests</a></li>
                 <li><a href="./views/testResults.php">Test Results</a></li>
                 <li><a href="./views/vaccination.php">Vaccination Status</a></li>
