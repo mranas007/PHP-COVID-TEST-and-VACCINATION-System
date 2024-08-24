@@ -15,53 +15,60 @@ class HospitalController
 
     public function register()
     {
-            $name = trim($_POST['name']);
-            $address = trim($_POST['address']);
-            $contact_number = trim($_POST['contact_number']);
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
+        $name = trim($_POST['name']);
+        $address = trim($_POST['address']);
+        $contact_number = trim($_POST['contact_number']);
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
 
-            if (!empty($name) && !empty($address) && !empty($email) && !empty($password)) {
-                $hospitalModel = new Hospital($this->conn);
-                if ($hospitalModel->findByEmail($email)) {
-                    echo "Email already registered.";
-                } else {
-                    if ($hospitalModel->register($name, $address, $contact_number, $email, $password)) {
-                        header('Location: ../hospitalDashboard.php');
-                        echo "Registration successful.";
-                        exit;
-                    } else {
-                        echo "Registration failed. Please try again.";
-                    }
-                }
+        if (!empty($name) && !empty($address) && !empty($email) && !empty($password)) {
+            $hospitalModel = new HospitalModel($this->conn);
+            if ($hospitalModel->findByEmail($email)) {
+                echo "Email already registered.";
             } else {
-                echo "Please fill in all required fields.";
-            }
-        }
-    
-
-        public function login()
-        {
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
-    
-            if (!empty($email) && !empty($password)) {
-                $userModel = new Hospital($this->conn);
-                $user = $userModel->login($email, $password);
-    
-                if ($user) {
-                    session_start();
-                    $_SESSION['user_id'] = $user['id'];
+                if ($hospitalModel->register($name, $address, $contact_number, $email, $password)) {
                     header('Location: ../hospitalDashboard.php');
+                    echo "Registration successful.";
                     exit;
                 } else {
-                    header('Location: ../views/hospital/login.php?error=Invalid+credentials');
-                    exit;
+                    echo "Registration failed. Please try again.";
                 }
-            } else {
-                echo "Email and password are required.";
             }
+        } else {
+            echo "Please fill in all required fields.";
         }
+    }
+
+
+    public function login()
+    {
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+
+        if (!empty($email) && !empty($password)) {
+            $userModel = new HospitalModel($this->conn);
+            $user = $userModel->login($email, $password);
+
+            if ($user) {
+                session_start();
+                $_SESSION['user_id'] = $user['id'];
+                header('Location: ../hospitalDashboard.php');
+                exit;
+            } else {
+                header('Location: ../views/hospital/login.php?error=Invalid+credentials');
+                exit;
+            }
+        } else {
+            echo "Email and password are required.";
+        }
+    }
+
+    // this Method is using in "patientRequest" pade 
+    function getPatientAppointmentApproval()
+    {
+        $patientAppointment = new HospitalModel($this->conn);
+        return $patientAppointment->getPatientAppointmentApproval();
+    }
 
     public function __destruct()
     {

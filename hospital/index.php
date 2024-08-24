@@ -27,14 +27,27 @@
                 <div class="col-md-4 my-4">
                     <div class="panel p-3 border rounded bg-light">
                         <h3>Total Patients</h3>
-                        <p>100</p>
+                        <p><?php
+                            require_once '../hospital/controllers/crudController.php';
+                            $crudController = new crudController();
+                            $patientResult = $crudController->readAll("patient");
+                            $patient = $patientResult->fetch_all(MYSQLI_ASSOC);
+                            $total_patient = count($patient);
+                            echo $total_patient > 0 ? $total_patient : 0;
+                            ?></p>
                         <button class="btn btn-purple">View All</button>
                     </div>
                 </div>
                 <div class="col-md-4 my-4">
                     <div class="panel p-3 border rounded bg-light">
                         <h3>Pending Requests</h3>
-                        <p>10</p>
+                        <p><?php
+                            $crudController = new crudController();
+                            $pendingResult = $crudController->readAll("Hospital_appointment");
+                            $patient = $pendingResult->fetch_all(MYSQLI_ASSOC);
+                            $total_patient = count($patient);
+                            echo $total_patient['status'] == "Pending" ? $total_patient : 0;
+                            ?></p>
                         <button class="btn btn-purple">View All</button>
                     </div>
                 </div>

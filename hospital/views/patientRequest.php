@@ -11,31 +11,52 @@
 
 <body>
     <div class="d-flex">
-        <div class="sidebar">
-            <div class="h4 mb-4 px-3">Hospital Name</div>
-            <ul class="list-unstyled">
-                <li><a href="../hospitalDashboard.php">Dashboard</a></li>
-                <li><a href="./patientsList.php">Patient Requests</a></li>
-                <li><a href="./testResults.php">Test Results</a></li>
-                <li><a href="./vaccination.php">Vaccination Status</a></li>
-                <li><a href="./profile.php">Profile</a></li>
-                <li><a href="./logout.php">Logout</a></li>
-            </ul>
-        </div>
+        <?php  require_once './partial/sidebar.php'; ?>
         <div class="content my-4">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Request ID</th>
+                        <th>ID</th>
                         <th>Patient Name</th>
-                        <th>Test/Vaccination Type</th>
-                        <th>Requested Date</th>
+                        <th>Test Type</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <th>Requested Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <?php
+                    require_once '../controllers/hospitalController.php';
+
+                    $patientRequest = new HospitalController();
+                    $getData = $patientRequest->getPatientAppointmentApproval();
+
+                    if ($getData) {
+                        foreach ($getData as $row) {
+                            if (htmlspecialchars($row['status']) === "Approved") {
+                                echo '<tr>
+                                <td>' . htmlspecialchars($row['id']) . '</td>
+                                <td>' . htmlspecialchars($row['p_name']) . '</td>
+                                <td>' . htmlspecialchars($row['test_type']) . '</td>
+                                <td style="background-color:green; color:white;">' . htmlspecialchars($row['status']) . '</td>
+                                <td>' . htmlspecialchars($row['appointment_date']) . '</td>
+                                </tr>';
+                            }else if(htmlspecialchars($row['status']) === "Rejected"){
+                                echo '<tr>
+                                <td>' . htmlspecialchars($row['id']) . '</td>
+                                <td>' . htmlspecialchars($row['p_name']) . '</td>
+                                <td>' . htmlspecialchars($row['test_type']) . '</td>
+                                <td>' . htmlspecialchars($row['status']) . '</td>
+                                <td style="background-color:red; color:white;">' . htmlspecialchars($row['status']) . '</td>
+                                <td>' . htmlspecialchars($row['appointment_date']) . '</td>
+                                </tr>';
+                            }
+                        }
+                    } else {
+                        echo '<tr><td colspan="7">No data available</td></tr>';
+                    }
+                    ?>
+ 
+                   <!-- <tr>
                         <td>1</td>
                         <td>Jane Doe</td>
                         <td>COVID Test</td>
@@ -45,7 +66,7 @@
                             <button class="btn btn-purple">Approve</button>
                             <button class="btn btn-purple">Reject</button>
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>

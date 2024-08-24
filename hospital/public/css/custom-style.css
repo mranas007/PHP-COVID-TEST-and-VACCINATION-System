@@ -15,7 +15,8 @@
   text-decoration: none;
 }
 
-.sidebar a:hover {
+.sidebar a:hover,
+.sidebar .active {
   background-color: #5a3791;
 }
 
@@ -58,6 +59,7 @@
 .table-bordered {
   border: 1px solid #dee2e6;
 }
+
 .table-bordered th,
 .table-bordered td {
   border: 1px solid #dee2e6;
