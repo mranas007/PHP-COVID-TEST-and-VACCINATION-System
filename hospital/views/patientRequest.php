@@ -11,7 +11,7 @@
 
 <body>
     <div class="d-flex">
-        <?php  require_once './partial/sidebar.php'; ?>
+        <?php require_once './partial/sidebar.php'; ?>
         <div class="content my-4">
             <table class="table table-bordered">
                 <thead>
@@ -40,7 +40,7 @@
                                 <td style="background-color:green; color:white;">' . htmlspecialchars($row['status']) . '</td>
                                 <td>' . htmlspecialchars($row['appointment_date']) . '</td>
                                 </tr>';
-                            }else if(htmlspecialchars($row['status']) === "Rejected"){
+                            } else if (htmlspecialchars($row['status']) === "Rejected") {
                                 echo '<tr>
                                 <td>' . htmlspecialchars($row['id']) . '</td>
                                 <td>' . htmlspecialchars($row['p_name']) . '</td>
@@ -55,8 +55,8 @@
                         echo '<tr><td colspan="7">No data available</td></tr>';
                     }
                     ?>
- 
-                   <!-- <tr>
+
+                    <!-- <tr>
                         <td>1</td>
                         <td>Jane Doe</td>
                         <td>COVID Test</td>

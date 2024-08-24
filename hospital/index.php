@@ -11,17 +11,8 @@
 
 <body>
     <div class="d-flex">
-        <div class="sidebar">
-            <div class="h4 mb-4 px-3">Hospital Name</div>
-            <ul class="list-unstyled">
-                <li><a href="./index.php">Dashboard</a></li>
-                <li><a href="./views/patientsList.php">Patient Requests</a></li>
-                <li><a href="./views/testResults.php">Test Results</a></li>
-                <li><a href="./views/vaccination.php">Vaccination Status</a></li>
-                <li><a href="./views/profile.php">Profile</a></li>
-                <li><a href="./views/logout.php">Logout</a></li>
-            </ul>
-        </div>
+        <?php require_once 'views/partial/sidebar.php'; ?>
+
         <div class="content my-4">
             <div class="row">
                 <div class="col-md-4 my-4">
@@ -42,12 +33,23 @@
                     <div class="panel p-3 border rounded bg-light">
                         <h3>Pending Requests</h3>
                         <p><?php
-                            $crudController = new crudController();
+                            $crudController = new CrudController();
                             $pendingResult = $crudController->readAll("Hospital_appointment");
-                            $patient = $pendingResult->fetch_all(MYSQLI_ASSOC);
-                            $total_patient = count($patient);
-                            echo $total_patient['status'] == "Pending" ? $total_patient : 0;
-                            ?></p>
+
+                            if ($pendingResult) {
+                                $patient = $pendingResult->fetch_all(MYSQLI_ASSOC);
+                                $total_pending = 0;
+                                foreach ($patient as $row) {
+                                    if ($row['status'] == "Pending") {
+                                        $total_pending++;
+                                    }
+                                }
+                                echo $total_pending;
+                            } else {
+                                echo 0;
+                            }
+                            ?>
+                        </p>
                         <button class="btn btn-purple">View All</button>
                     </div>
                 </div>

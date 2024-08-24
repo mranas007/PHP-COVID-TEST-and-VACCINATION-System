@@ -11,17 +11,8 @@
 
 <body>
     <div class="d-flex">
-        <div class="sidebar">
-            <div class="h4 mb-4 px-3">Hospital Name</div>
-            <ul class="list-unstyled">
-                <li><a href="../index.php">Dashboard</a></li>
-                <li><a href="./patientsList.php">Patient Requests</a></li>
-                <li><a href="./testResults.php">Test Results</a></li>
-                <li><a href="./vaccination.php">Vaccination Status</a></li>
-                <li><a href="./profile.php">Profile</a></li>
-                <li><a href="./logout.php">Logout</a></li>
-            </ul>
-        </div>
+        <?php require_once './partial/sidebar.php'; ?>
+
         <div class="content my-4">
             <table class="table table-bordered">
                 <thead>

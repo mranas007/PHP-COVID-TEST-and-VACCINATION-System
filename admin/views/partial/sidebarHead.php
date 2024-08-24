@@ -28,16 +28,16 @@ if ($current_page == 'index.php') {
         <button id="closeBtn" class="close-btn">&times;</button>
     </div>
     <ul class="sidebar-menu">
-        <li><a class="<?php echo $dashboard ?>" href="/covid-19/admin/index.php">Dashboard</a></li>
-        <li><a class="<?php echo $patient ?>" href="/covid-19/admin/views/patient.php">Patient</a></li>
-        <li><a class="<?php echo $appointment_approvel ?>" href="/covid-19/admin/views/appointment_approvel.php">Appointment Approvel</a></li>
-        <li><a class="<?php echo $report ?>" href="/covid-19/admin/views/report.php">Report</a></li>
-        <li><a class="<?php echo $list_hospital ?>" href="/covid-19/admin/views/list_hospital.php">List of Hospital</a></li>
-        <li><a class="<?php echo $list_vaccine ?>" href="/covid-19/admin/views/list_vaccine.php">List of Vaccine</a></li>
-        <li><a class="<?php echo $b_details ?>" href="/covid-19/admin/views/booking_details.php">Covid 19 Booking Details</a></li>
-        <li><a href="/covid-19/admin/controllers/logout.php">Logout</a></li>
-        <li><a href="/covid-19/admin/views/login.php">Login</a></li>
-        <li><a href="/covid-19/admin/views/register.php">Register</a></li>
+        <li><a class="<?php echo $dashboard ?>" href="/PHP-COVID-TEST-and-VACCINATION-System/admin/index.php">Dashboard</a></li>
+        <li><a class="<?php echo $patient ?>" href="/PHP-COVID-TEST-and-VACCINATION-System/admin/views/patient.php">Patient</a></li>
+        <li><a class="<?php echo $appointment_approvel ?>" href="/PHP-COVID-TEST-and-VACCINATION-System/admin/views/appointment_approvel.php">Appointment Approvel</a></li>
+        <li><a class="<?php echo $report ?>" href="/PHP-COVID-TEST-and-VACCINATION-System/admin/views/report.php">Report</a></li>
+        <li><a class="<?php echo $list_hospital ?>" href="/PHP-COVID-TEST-and-VACCINATION-System/admin/views/list_hospital.php">List of Hospital</a></li>
+        <li><a class="<?php echo $list_vaccine ?>" href="/PHP-COVID-TEST-and-VACCINATION-System/admin/views/list_vaccine.php">List of Vaccine</a></li>
+        <li><a class="<?php echo $b_details ?>" href="/PHP-COVID-TEST-and-VACCINATION-System/admin/views/booking_details.php">Covid 19 Booking Details</a></li>
+        <li><a href="/PHP-COVID-TEST-and-VACCINATION-System/admin/controllers/logout.php">Logout</a></li>
+        <li><a href="/PHP-COVID-TEST-and-VACCINATION-System/admin/views/login.php">Login</a></li>
+        <li><a href="/PHP-COVID-TEST-and-VACCINATION-System/admin/views/register.php">Register</a></li>
     </ul>
 </div>
 <div class="main-content">
